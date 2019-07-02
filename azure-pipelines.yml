@@ -12,8 +12,8 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+    versionSpec: '10.16.0'
+  displayName: 'Install NodeJS LTS'
 
 - script: |
     npm install
@@ -24,13 +24,14 @@ steps:
     npm install -g @angular/cli@7.x
     npm install
     ng build --prod
-  displayName: 'angular install'
+  displayName: 'Install Angular 7.x'
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)'
+  displayName: 'Publish Build Artifacts'
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-    includeRootFolder: false
+#- task: ArchiveFiles@2
+#  inputs:
+#    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+#    includeRootFolder: false
