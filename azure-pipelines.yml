@@ -20,6 +20,12 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
+- script: |
+    npm install -g @angular/cli
+    npm install
+    ng build --prod
+  displayName: 'angular install'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)'
